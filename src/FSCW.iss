@@ -245,8 +245,8 @@
 #define public FontCache30Service 'FontCache3.0.0.0'
 
 //File name for the FontState Log
-#define public LogFontDataFilename 'Log-FontData.txt'
-#define public LogFontDataFilenameOld 'Log-FontData-old.txt'
+#define public LogFontDataFilename 'Log-FSCW.txt'
+#define public LogFontDataFilenameOld 'Log-FSCW-old.txt'
 
 //We need this more than once
 #define public TrueType '(TrueType)'
@@ -255,7 +255,7 @@
 
 //--------------------------------------------------------
 //Version of this installer script. Please do not change.
-#define public ScriptVersion '2.03'
+#define public ScriptVersion '2.04'
 //--------------------------------------------------------
 
 

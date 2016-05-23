@@ -15,13 +15,11 @@ Although it might seem like overkill to use a Windows installer for fonts, there
 - Uses downloads `(SetupExe)` from your repository and double clicks it. 
 - User sees a *Windows protected your PC* message, clicks on `More info` and selects `Run anyway`. 
 - **Note:** This *Windows SmartScreen warning* can be safely ignored as it is caused only by the fact that the EXE is not digitally signed. You may want to upload the EXE file to [VirusTotal](http://www.virustotal.com) and link to the report from your repository. 
-- User is asked if the font(s) should be installed
-- **SCREENSHOT**
-- `(SetupExe)` asks the user to perform a restart 
+- User is asked if the font(s) should be installed ([Screenshot](https://github.com/source-foundry/fscw/raw/master/img/screenshot-install.png)).
+- `(SetupExe)` asks the user to perform a restart ([Screenshot](https://github.com/source-foundry/fscw/raw/master/img/screenshot-restart.png)).
 - Font can be used.
 
-To uninstall, the user goes to the *Add/Remove Programs* applet in Control Panel, selects the entry and clicks on *Remove*.
-**SCREENSHOT**
+To uninstall, the user goes to the *Add/Remove Programs* applet in Control Panel, selects the entry and clicks on *Remove* ([Screenshot](https://github.com/source-foundry/fscw/raw/master/img/screenshot-uninstall.png)).
 
 ## How to use it
 
@@ -41,7 +39,7 @@ To uninstall, the user goes to the *Add/Remove Programs* applet in Control Panel
 - Select *Build* - *Compile* (CTRL+F9)
 - Retrieve your `(SetupExe)` from the `\out` folder
 
-## Building without Windows (using AppVeyor)
+## Building using AppVeyor
 
 [AppVeyor](https://www.appveyor.com/) is a continuous integration (CI) service that provides a Windows based environment and can be freely used for open source projects. You can use it to build `(SetupExe)` if you do not have access to a Windows installation.  
 
@@ -53,6 +51,11 @@ To uninstall, the user goes to the *Add/Remove Programs* applet in Control Panel
 - Push to your repository and AppVeyor will create the setup EXE for you automatically (might take some minutes)
 - You can download the EXE file by selecting your project, clicking on *LATEST BUILD* and selecting *ARTIFACTS* 
 
+## Contributions 
+
+Any constructive contribution is very welcome, regarless if it's an [issue](https://github.com/source-foundry/Hack-windows-installer/issues/new) or a [pull request](https://help.github.com/articles/using-pull-requests/).
+
+If users of the setup are experience difficulties, please open a new [issue](https://github.com/source-foundry/Hack-windows-installer/issues/new) and include the log file FSCW generates. This log file can be found in C:\Program Files\\`(DestinationFolder)`\\*Log-FSCW.txt*. Please post the entire contents of this log along with the issue.   
 
 
 ## License

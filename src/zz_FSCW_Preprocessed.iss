@@ -225,7 +225,7 @@ ReadyLabel2b=Setup is now ready to install the Ten Gallon Hat fonts v1.02 on you
 Name: "{app}\Fonts Applet"; Filename: "control.exe"; Parameters: "/name Microsoft.Fonts"; WorkingDir: "{win}";
 
 ;Link to the homepage for this font
-Name: "{app}\Website"; Filename: "http://sourcefoundry.org/hack/"; 
+Name: "{app}\Homepage"; Filename: "http://sourcefoundry.org/hack/"; 
 
 
 [Files]
@@ -265,7 +265,7 @@ Name: "{app}\Website"; Filename: "http://sourcefoundry.org/hack/";
   Type: files; Name: "{fonts}\Hack-RegularOblique-DEV.otf"; 
 ;------------------------
 
-;Delete old log files that were use prior to FSCW
+;Delete old log files that were used prior to FSCW
 Type: files; Name: "{app}\Log-FontData*.txt"
 
 
@@ -672,7 +672,7 @@ begin
 
   LogAsImportant('--------------------------------');
   LogAsImportant('Font name.....: Ten Gallon Hat fonts');
-  LogAsImportant('Script version: 2.04');
+  LogAsImportant('Script version: 2.05');
   LogAsImportant('Setup version.: 1.0.0');
   LogAsImportant('Font version..: 1.02');
   LogAsImportant('Local time....: ' + GetDateTimeString('yyyy-dd-mm hh:nn', '-', ':'));

@@ -4,7 +4,7 @@
 //https://github.com/source-foundry/fscw
 //--------------------------------------------------------
 //Version of this installer script. Please do not change.
-#define public ScriptVersion '2.04'
+#define public ScriptVersion '2.05'
 //--------------------------------------------------------
 
 
@@ -129,10 +129,10 @@
  #error 'DestinationFolder is empty'
 #endif
 
-//Retrieve Website 
-#define public Website GetDataIniValue(SectionAbout, 'Website')
-#if len(Website)==0
- #error 'Website is empty'
+//Retrieve Homepage 
+#define public Homepage GetDataIniValue(SectionAbout, 'Homepage')
+#if len(Homepage)==0
+ #error 'Homepage is empty'
 #endif
 
 //Retrieve license file(s) 
@@ -303,7 +303,7 @@ AppCopyright={#Copyright}
 ;Information displayed in Control Panel -> Add/Remove Programs applet
 ;---------------------------------------------------
 ;Displayed as "Help link:"
-AppSupportURL={#Website}
+AppSupportURL={#Homepage}
 ;Should also be displayed there, but I was unable to verify this
 AppContact={#Publisher}
 ;Displayed as "Comments" 
@@ -386,7 +386,7 @@ ReadyLabel2b=Setup is now ready to install the {#FontName} v{#FontVersion} on yo
 Name: "{app}\Fonts Applet"; Filename: "control.exe"; Parameters: "/name Microsoft.Fonts"; WorkingDir: "{win}";
 
 ;Link to the homepage for this font
-Name: "{app}\Website"; Filename: "{#Website}"; 
+Name: "{app}\Homepage"; Filename: "{#Homepage}"; 
 
 
 [Files]
@@ -431,14 +431,14 @@ Name: "{app}\Website"; Filename: "{#Website}";
 ;------------------------
 ;Remove old font files during install
 #define public i 0
-#sub Sub_InstallDeleteRemove
+#sub Sub_InstallDeleteRemoveOldFonts
   Type: files; Name: "{fonts}\{#remove_font_files[i]}"; 
 #endsub
-#for {i = 0; i < remove_font_count; i++} Sub_InstallDeleteRemove
+#for {i = 0; i < remove_font_count; i++} Sub_InstallDeleteRemoveOldFonts
 #undef i
 ;------------------------
 
-;Delete old log files that were use prior to FSCW
+;Delete old log files that were used prior to FSCW
 Type: files; Name: "{app}\Log-FontData*.txt"
 
 
@@ -446,20 +446,20 @@ Type: files; Name: "{app}\Log-FontData*.txt"
 ;------------------------
 ;Remove old font names during install
 #define public i 0
-#sub Sub_RegistyDelete
+#sub Sub_RegistyDeleteOldFonts
   Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts"; ValueName: "{#remove_font_names[i]} {#TrueType}"; ValueType: none; Flags: deletevalue;
 #endsub
-#for {i = 0; i < remove_font_count; i++} Sub_RegistyDelete
+#for {i = 0; i < remove_font_count; i++} Sub_RegistyDeleteOldFonts
 #undef i
 ;------------------------
 
 ;------------------------
 ;Delete any entry found in FontSubsitutes for each of the fonts that will be installed
 #define public i 0
-#sub Sub_DeleteRegistryFontSubstitutes
+#sub Sub_RegistryDeleteFontSubstitutes
   Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\FontSubstitutes"; ValueName: "{#font_names[i]} {#TrueType}"; ValueType: none; Flags: deletevalue;
 #endsub
-#for {i = 0; i < install_font_count; i++} Sub_DeleteRegistryFontSubstitutes
+#for {i = 0; i < install_font_count; i++} Sub_RegistryDeleteFontSubstitutes
 #undef i
 ;------------------------
 

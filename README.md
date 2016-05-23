@@ -10,7 +10,7 @@ FSCW includes all best practises for font installation on Windows we have learne
 
 Although it might seem like overkill to use a Windows installer for fonts, there is good reason for this on the Windows platform. A number of things can go wrong when one tries to install or update frequently updated fonts manually (see [issue #152](https://github.com/chrissimpkins/Hack/issues/152) and [issue #129](https://github.com/chrissimpkins/Hack/issues/129) in the [Hack repository](https://github.com/chrissimpkins/Hack/)).
 
-## Setup experience
+## Setup experience for the generated setup
 
 - Uses downloads `(SetupExe)` from your repository and double clicks it. 
 - User sees a *Windows protected your PC* message, clicks on `More info` and selects `Run anyway`. 
@@ -26,9 +26,9 @@ To uninstall, the user goes to the *Add/Remove Programs* applet in Control Panel
 ## How to use it
 
 - Clone this repository
-- Delete the test fonts included and exchange them for your your own `*.TTF` files (in `/fonts`)
+- Delete the test fonts and exchange them for your your own `*.TTF` files (in `/fonts`)
 - Update the other files as you see fit (e.g. `License.txt`, icon file etc.)
-- Update `src/DATA.ini` to match your own data (Your name, copyright etc.)  
+- Update `src/DATA.ini` to match your own data (Name, copyright etc.)  
 - **NOTE** Please always remember to update `UniqueID` in `src/DATA.ini`
 
 ## Building on Windows

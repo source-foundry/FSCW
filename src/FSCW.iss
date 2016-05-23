@@ -1,7 +1,7 @@
 //Font Setup Creator for Windows (FSCW)
 //Copyright (C) 2016 Michael 'Tex' Hex / Source Foundry
 //Licensed under the MIT License
-//https://github.com/source-foundry/fscw
+//https://github.com/source-foundry/FSCW
 //--------------------------------------------------------
 //Version of this installer script. Please do not change.
 #define public ScriptVersion '2.06'

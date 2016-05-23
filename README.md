@@ -13,11 +13,11 @@ Although it might seem like overkill to use a Windows installer for fonts, there
 ## Setup experience
 
 - Uses downloads `(SetupExe)` from your repository and double clicks it. 
-- User sees a *Windows protected your PC* message, clicks on `More info` and selects `Run anyway`. 
+- User sees a *Windows protected your PC* message: Needs to click on `More info` and the `Run anyway`. 
 - **Note:** This *Windows SmartScreen warning* can be safely ignored as it is caused only by the fact that the EXE is not digitally signed. You may want to upload the EXE file to [VirusTotal](http://www.virustotal.com) and link to the report from your repository. 
 - User is asked if the font(s) should be installed ([Screenshot](https://github.com/source-foundry/FSCW/raw/master/img/screenshot-install.png)).
-- `(SetupExe)` asks the user to perform a restart ([Screenshot](https://github.com/source-foundry/FSCW/raw/master/img/screenshot-restart.png)).
-- Font can be used.
+- User is asked to to perform a restart ([Screenshot](https://github.com/source-foundry/FSCW/raw/master/img/screenshot-restart.png)).
+- Installed font(s) can be used.
 
 To uninstall, the user goes to the *Add/Remove Programs* applet in Control Panel, selects the entry and clicks on *Uninstall* ([Screenshot](https://github.com/source-foundry/FSCW/raw/master/img/screenshot-uninstall.png)).
 
@@ -51,7 +51,7 @@ To uninstall, the user goes to the *Add/Remove Programs* applet in Control Panel
 - Push to your repository and AppVeyor will create the setup EXE for you automatically (might take some minutes)
 - You can download the `(SetupExe)` file by selecting your project, clicking on *LATEST BUILD* and selecting *ARTIFACTS* 
 
-You can also change [appveyor.yml](https://github.com/source-foundry/FSCW/blob/master/appveyor.yml) so the resulting `(SetupExe)` is added as a new release to you repository. The command for this is only commented out, but requires a GitHub token. Please use *Encrypt data* within AppVeyor.com (Right side of the top row) to encrypt your token!   
+You can also change [appveyor.yml](https://github.com/source-foundry/FSCW/blob/master/appveyor.yml) so the resulting `(SetupExe)` is added as a new release to you repository. The command for this is only commented out, but requires a GitHub token. Please use *Encrypt data* in the account menu within AppVeyor.com to encrypt your token!   
 
 ## Contributions 
 

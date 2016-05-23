@@ -2,7 +2,7 @@
 
 Font Setup Creator for Windows (FSCW) is a a toolkit to create a Windows desktop setup for fonts. 
 
-It is driven by a [DATA.ini](https://github.com/source-foundry/FSCW/blob/master/src/Data.ini) file that includes all necessary information about the font(s) to install and uses [Inno Setup](http://www.jrsoftware.org/isinfo.php) to generate the Setup.exe file. If you do not run Windows, a build script for [AppVeyor](https://www.appveyor.com/) is also included. AppVeyor can build the Setup EXE automatically each time you push to your repository.
+It is driven by a [DATA.ini](https://github.com/source-foundry/FSCW/blob/master/src/DATA.ini) file that includes all necessary information about the font(s) to install and uses [Inno Setup](http://www.jrsoftware.org/isinfo.php) to generate the Setup.exe file. If you do not run Windows, a build script for [AppVeyor](https://www.appveyor.com/) is also included. AppVeyor can build the Setup EXE automatically each time you push to your repository.
 
 ## Why this project exists
 

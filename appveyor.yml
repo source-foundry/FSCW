@@ -1,6 +1,6 @@
 # Appveyor build script for FSCW
 
-version: 2.0.{build}
+version: 1.0.{build}
 
 # Do not run when just a tag is pushed 
 skip_tags: true
@@ -9,11 +9,11 @@ branches:
   except:
     - gh-pages
 
-	
+
 environment:
   INNOSETUP_DOWNLOAD_URL: https://github.com/source-foundry/fscw/releases/download/v0.0.1/innosetup.exe
- 
- 
+
+
 install: 
   # Create TEMP folder
   - md C:\temp
@@ -23,15 +23,16 @@ install:
   # Add Inno Setup to PATH so the ISCC command is found
   - set PATH="C:\Program Files (x86)\Inno Setup 5";%PATH%
 
-  
+
 build_script:
   - iscc.exe /DEXTERNAL_VERSION=%APPVEYOR_BUILD_VERSION% %APPVEYOR_BUILD_FOLDER%\src\FSCW.iss
-  
-  
+
+
 artifacts:
   - path: 'out\*.exe'
     name: SetupExe
-	
+
+
 #deploy:
 #  provider: GitHub
 #  auth_token:
@@ -42,11 +43,11 @@ artifacts:
 #  release: Version $(appveyor_build_version)
 #  description: $(APPVEYOR_REPO_COMMIT_MESSAGE) ($(APPVEYOR_REPO_COMMIT_TIMESTAMP))
 
-  
+
 #notifications:
 #  - provider: Slack
 #    auth_token:
 #      secure: <Yoursecuretoken>
 #    channel: '#release-info'
-  
+
 #done

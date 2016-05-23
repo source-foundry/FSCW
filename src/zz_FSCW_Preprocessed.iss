@@ -8,6 +8,7 @@
 
 
 
+
 ; ISPP Base Path: C:\dev\git\fscw\
 
 
@@ -104,7 +105,6 @@
 
 
 
-
 ;---DEBUG---
 ;This output ensures that we do not have font_xxx array elements that are empty.
 ;Because the sub expects a string for each item, an error from ISPP about "Actual datatype not declared type" 
@@ -133,7 +133,7 @@
 AppId=TenGallonHatSetup
 SetupMutex=TenGallonHatSetup_Mutex 
 
-AppName=TenGallonHat Font
+AppName=Ten Gallon Hat Font
 
 AppVersion=1.0.0
 VersionInfoVersion=1.0.0
@@ -204,10 +204,10 @@ AllowCancelDuringInstall=False
 ;Patching default Windows/App text
 [Messages]
 ;SetupAppTitle is displayed in the taskbar
-SetupAppTitle=TenGallonHat Font
+SetupAppTitle=Ten Gallon Hat Font
 
 ;SetupWindowsTitle is displayed in the setup window itself so we better include the version
-SetupWindowTitle=TenGallonHat Font 1.0.0
+SetupWindowTitle=Ten Gallon Hat Font 1.0.0
 
 ;Messages for the "Read to install" wizard page
   ;NOT USED - "Ready To Install" - below title bar
@@ -265,6 +265,9 @@ Name: "{app}\Website"; Filename: "http://sourcefoundry.org/hack/";
   Type: files; Name: "{fonts}\Hack-RegularOblique-DEV.otf"; 
 ;------------------------
 
+;Delete old log files that were use prior to FSCW
+Type: files; Name: "{app}\Log-FontData*.txt"
+
 
 [Registry]
 ;------------------------
@@ -287,7 +290,7 @@ Name: "{app}\Website"; Filename: "http://sourcefoundry.org/hack/";
 [INI]
 ;Create an ini to make detection for enterprise deployment tools easy
 Filename: "{app}\InstallInfo.ini"; Section: "Main"; Key: "Version"; String: "1.0.0"
-Filename: "{app}\InstallInfo.ini"; Section: "Main"; Key: "Name"; String: "TenGallonHat Font"
+Filename: "{app}\InstallInfo.ini"; Section: "Main"; Key: "Name"; String: "Ten Gallon Hat Font"
 
 
 [UninstallDelete]
@@ -556,7 +559,7 @@ begin
   title:=SetupMessage(msgWizardPreparing);
   subTitle:=SetupMessage(msgPreparingDesc);
   
-  StringChangeEx(subTitle, '[name]', 'TenGallonHat Font', True);
+  StringChangeEx(subTitle, '[name]', 'Ten Gallon Hat Font', True);
   customProgressPage:=CreateOutputProgressPage(title, subTitle);
 end;
 
@@ -669,7 +672,7 @@ begin
 
   LogAsImportant('--------------------------------');
   LogAsImportant('Font name.....: Ten Gallon Hat fonts');
-  LogAsImportant('Script version: 2.03');
+  LogAsImportant('Script version: 2.04');
   LogAsImportant('Setup version.: 1.0.0');
   LogAsImportant('Font version..: 1.02');
   LogAsImportant('Local time....: ' + GetDateTimeString('yyyy-dd-mm hh:nn', '-', ':'));
@@ -766,17 +769,17 @@ begin
       appDestinationFolder:=AddBackslash(appDestinationFolder);
       if DirExists(appDestinationFolder) then begin
          
-         If FileExists(appDestinationFolder + 'Log-FontData.txt') then begin
+         If FileExists(appDestinationFolder + 'Log-FSCW.txt') then begin
             
-            If FileExists(appDestinationFolder + 'Log-FontData-old.txt') then begin
-               DeleteFile(appDestinationFolder + 'Log-FontData-old.txt');
+            If FileExists(appDestinationFolder + 'Log-FSCW-old.txt') then begin
+               DeleteFile(appDestinationFolder + 'Log-FSCW-old.txt');
             end;
 
-            RenameFile(appDestinationFolder + 'Log-FontData.txt', appDestinationFolder + 'Log-FontData-old.txt'); 
+            RenameFile(appDestinationFolder + 'Log-FSCW.txt', appDestinationFolder + 'Log-FSCW-old.txt'); 
          end;            
 
-         log('Saving font state to ' + appDestinationFolder + 'Log-FontData.txt');
-         SaveStringsToFile(appDestinationFolder + 'Log-FontData.txt', FontStateBuffer, false); //do not append 
+         log('Saving font state to ' + appDestinationFolder + 'Log-FSCW.txt');
+         SaveStringsToFile(appDestinationFolder + 'Log-FSCW.txt', FontStateBuffer, false); //do not append 
       end;
 
 

@@ -2,7 +2,7 @@
 
 Font Setup Creator for Windows (FSCW) is a a toolkit to create a Windows desktop setup for fonts. 
 
-It is driven by a [DATA.ini](https://github.com/source-foundry/fscw/blob/master/src/Data.ini) file that includes all necessary information about the font(s) to install and uses [Inno Setup](http://www.jrsoftware.org/isinfo.php) to generate the Setup.exe file. If you do not run Windows, a build script for [AppVeyor](https://www.appveyor.com/) is also included. AppVeyor can build the Setup EXE automatically each time you push to your repository.
+It is driven by a [DATA.ini](https://github.com/source-foundry/FSCW/blob/master/src/Data.ini) file that includes all necessary information about the font(s) to install and uses [Inno Setup](http://www.jrsoftware.org/isinfo.php) to generate the Setup.exe file. If you do not run Windows, a build script for [AppVeyor](https://www.appveyor.com/) is also included. AppVeyor can build the Setup EXE automatically each time you push to your repository.
 
 ## Why this project exists
 
@@ -15,11 +15,11 @@ Although it might seem like overkill to use a Windows installer for fonts, there
 - Uses downloads `(SetupExe)` from your repository and double clicks it. 
 - User sees a *Windows protected your PC* message, clicks on `More info` and selects `Run anyway`. 
 - **Note:** This *Windows SmartScreen warning* can be safely ignored as it is caused only by the fact that the EXE is not digitally signed. You may want to upload the EXE file to [VirusTotal](http://www.virustotal.com) and link to the report from your repository. 
-- User is asked if the font(s) should be installed ([Screenshot](https://github.com/source-foundry/fscw/raw/master/img/screenshot-install.png)).
-- `(SetupExe)` asks the user to perform a restart ([Screenshot](https://github.com/source-foundry/fscw/raw/master/img/screenshot-restart.png)).
+- User is asked if the font(s) should be installed ([Screenshot](https://github.com/source-foundry/FSCW/raw/master/img/screenshot-install.png)).
+- `(SetupExe)` asks the user to perform a restart ([Screenshot](https://github.com/source-foundry/FSCW/raw/master/img/screenshot-restart.png)).
 - Font can be used.
 
-To uninstall, the user goes to the *Add/Remove Programs* applet in Control Panel, selects the entry and clicks on *Remove* ([Screenshot](https://github.com/source-foundry/fscw/raw/master/img/screenshot-uninstall.png)).
+To uninstall, the user goes to the *Add/Remove Programs* applet in Control Panel, selects the entry and clicks on *Uninstall* ([Screenshot](https://github.com/source-foundry/FSCW/raw/master/img/screenshot-uninstall.png)).
 
 ## How to use it
 
@@ -34,7 +34,7 @@ To uninstall, the user goes to the *Add/Remove Programs* applet in Control Panel
 
 - Perform the steps described in [How to use it](#how-to-use-it) 
 - Download [Inno Setup](http://www.jrsoftware.org/isinfo.php)
-  - Please make sure the option "Inno Setup Prepocessor" is activated during install
+- Please make sure the option "Inno Setup Prepocessor" is activated during install
 - Open `src\FSCW.iss`
 - Select *Build* - *Compile* (CTRL+F9)
 - Retrieve your `(SetupExe)` from the `\out` folder
@@ -49,15 +49,17 @@ To uninstall, the user goes to the *Add/Remove Programs* applet in Control Panel
 - Click *NEW PROJECT*
 - Select your repository and click *Add* 
 - Push to your repository and AppVeyor will create the setup EXE for you automatically (might take some minutes)
-- You can download the EXE file by selecting your project, clicking on *LATEST BUILD* and selecting *ARTIFACTS* 
+- You can download the `(SetupExe)` file by selecting your project, clicking on *LATEST BUILD* and selecting *ARTIFACTS* 
+
+You can also change [appveyor.yml](https://github.com/source-foundry/FSCW/blob/master/appveyor.yml) so the resulting `(SetupExe)` is added as a new release to you repository. The command for this is only commented out, but requires a GitHub token. Please use *Encrypt data* within AppVeyor.com (Right side of the top row) to encrypt your token!   
 
 ## Contributions 
 
-Any constructive contribution is very welcome, regarless if it's an [issue](https://github.com/source-foundry/Hack-windows-installer/issues/new) or a [pull request](https://help.github.com/articles/using-pull-requests/).
+Any constructive contribution is very welcome, regarless if it's an [issue](https://github.com/source-foundry/FSCW/issues/new) or a [pull request](https://help.github.com/articles/using-pull-requests/).
 
-If users of the setup are experience difficulties, please open a new [issue](https://github.com/source-foundry/Hack-windows-installer/issues/new) and include the log file FSCW generates. This log file can be found in C:\Program Files\\`(DestinationFolder)`\\*Log-FSCW.txt*. Please post the entire contents of this log along with the issue.   
+If users of the setup are experience difficulties, please open a new [issue](https://github.com/source-foundry/FSCW/issues/new) and include the log file FSCW generates. This log file can be found in C:\Program Files\\`(DestinationFolder)`\\*Log-FSCW.txt*. Please post the entire contents of this log along with the issue.   
 
 
 ## License
-Copyright © 2016 [Michael 'Tex' Hex](http://www.texhex.info/) / Source Foundry. Licensed under the **MIT License**. For details, please see [LICENSE.txt](https://github.com/source-foundry/Hack-test-win-installer/blob/master/LICENSE.txt).
+Copyright © 2016 [Michael 'Tex' Hex](http://www.texhex.info/) / [Source Foundry](http://sourcefoundry.org/hack/). Licensed under the **MIT License**. For details, please see [LICENSE.txt](https://github.com/source-foundry/FSCW/blob/master/LICENSE.txt).
 

@@ -2,6 +2,11 @@
 //Copyright (C) 2016 Michael 'Tex' Hex / Source Foundry
 //Licensed under the MIT License
 //https://github.com/source-foundry/fscw
+//--------------------------------------------------------
+//Version of this installer script. Please do not change.
+#define public ScriptVersion '2.04'
+//--------------------------------------------------------
+
 
 //We require InnoSetup 5.5.9
 #if VER < EncodeVer(5,5,9)
@@ -253,11 +258,6 @@
 
 
 
-//--------------------------------------------------------
-//Version of this installer script. Please do not change.
-#define public ScriptVersion '2.04'
-//--------------------------------------------------------
-
 
 
 ;---DEBUG---
@@ -437,6 +437,9 @@ Name: "{app}\Website"; Filename: "{#Website}";
 #for {i = 0; i < remove_font_count; i++} Sub_InstallDeleteRemove
 #undef i
 ;------------------------
+
+;Delete old log files that were use prior to FSCW
+Type: files; Name: "{app}\Log-FontData*.txt"
 
 
 [Registry]

@@ -1,13 +1,14 @@
-//Hack Windows Installer 
-//Copyright (C) 2016 Michael Hex 
+//Font Setup Creator for Windows (FSCW)
+//Copyright (C) 2016 Michael 'Tex' Hex / Source Foundry
 //Licensed under the MIT License
-//https://github.com/source-foundry/Hack-windows-installer
+//https://github.com/source-foundry/fscw
 
-//We require InnoSetup 5.5.8
-#if VER < EncodeVer(5,5,8)
-  #error A more recent version of Inno Setup is required to compile this script (5.5.8 or newer)
+//We require InnoSetup 5.5.9
+#if VER < EncodeVer(5,5,9)
+  #error A more recent version of Inno Setup is required to compile this script (5.5.9 or newer)
 #endif
 
+//Set ISPP options
 #pragma option -v+
 #pragma verboselevel 9
 
@@ -18,11 +19,11 @@
 #define base_path StringChange(SourcePath,'src\','') 
 #emit '; ISPP Base Path: ' + base_path
 
-
 //The name of the data.ini to be used. Default is data.ini in the same path as this file
 #define public DataIni AddBackslash(base_path) + 'src\Data.ini'
 
 //-------------------------------------------------
+
 
 //Start processing data from 'DATA.ini'
 #if !FileExists(DataIni)
@@ -32,10 +33,8 @@
 #define public SectionAbout 'About'
 #define public SectionGeneral 'General'
 #define public SectionVersion 'Version'
-//#define public SectionSupplementary 'Supplementary'
 #define public SectionInstallFonts 'InstallFonts'
 #define public SectionRemoveFonts 'RemoveFonts'
-
 
 //Reads a value from the Data.ini 
 #define public GetDataIniValue(str sectionName, str valueName) \
@@ -46,9 +45,9 @@
         GetDataIniValue(sectionName, valueName + '.' + Str(Counter))
 
 
-//Retrieve SetupID
-#define public SetupID GetDataIniValue('ID', 'UniqueID')
-#if len(SetupID)==0
+//Retrieve UniqueID
+#define public UniqueID GetDataIniValue('ID', 'UniqueID')
+#if len(UniqueID)==0
  #pragma error 'UniqueID is empty'
 #endif
 
@@ -256,7 +255,7 @@
 
 //--------------------------------------------------------
 //Version of this installer script. Please do not change.
-#define public ScriptVersion '2.01'
+#define public ScriptVersion '2.03'
 //--------------------------------------------------------
 
 
@@ -290,8 +289,8 @@
 
 
 [Setup]
-AppId={#SetupID}
-SetupMutex={#SetupID}_Mutex 
+AppId={#UniqueID}
+SetupMutex={#UniqueID}_Mutex 
 
 AppName={#InstallerName}
 
@@ -1092,4 +1091,4 @@ end;
 
 
 //Save the result of the preprocessor to a file for review
-#expr SaveToFile(AddBackslash(SourcePath) + "zz_Preprocessor_Result.iss")
+#expr SaveToFile(AddBackslash(SourcePath) + "zz_FSCW_Preprocessed.iss")

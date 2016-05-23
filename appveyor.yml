@@ -1,28 +1,29 @@
-# Appveyor build script
-# List of installed tools/SDKs etc.: https://www.appveyor.com/docs/installed-software
+# Appveyor build script for FSCW
 
 version: 2.0.{build}
 
-# Do not run when just a tag is pushed (which we do automatically by adding a release)
+# Do not run when just a tag is pushed 
 skip_tags: true
 
 branches:
   except:
     - gh-pages
 
+	
 environment:
   INNOSETUP_DOWNLOAD_URL: https://github.com/source-foundry/fscw/releases/download/v0.0.1/innosetup.exe
-
-  
+ 
+ 
 install: 
+  # Create TEMP folder
+  - md C:\temp
   # Download and install Inno Setup. 
   - ps: (new-object net.webclient).DownloadFile('$env:INNOSETUP_DOWNLOAD_URL', 'c:\temp\innosetup.exe')
   - c:\temp\innosetup.exe TYPE=full /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /CLOSEAPPLICATIONS /NORESTARTAPPLICATIONS
   # Add Inno Setup to PATH so the ISCC command is found
   - set PATH="C:\Program Files (x86)\Inno Setup 5";%PATH%
 
-    
-
+  
 build_script:
   - iscc.exe /DEXTERNAL_VERSION=%APPVEYOR_BUILD_VERSION% %APPVEYOR_BUILD_FOLDER%\src\FSCW.iss
   
@@ -30,12 +31,11 @@ build_script:
 artifacts:
   - path: 'out\*.exe'
     name: SetupExe
-
 	
 #deploy:
 #  provider: GitHub
 #  auth_token:
-#    secure: 6Ez1BkZ4iDyoY17CZAwbOcQJcKnn8ZWK3vV2QINglWqgkOFRkN4JCtdMu0fyBFMc
+#    secure: <Yoursecuretoken>
 #  artifact: SetupExe
 #  prerelease: true
 #  tag: v$(appveyor_build_version)
@@ -46,7 +46,7 @@ artifacts:
 #notifications:
 #  - provider: Slack
 #    auth_token:
-#      secure: ElggvPLQdlcU9+djZsLDZpZLjOOpYg5Y2DRFQGN2yuSrZqoOP/1PCAmUSd8RJjrukymK1FQNrKuSpiw0hLHEeg==
+#      secure: <Yoursecuretoken>
 #    channel: '#release-info'
   
 #done

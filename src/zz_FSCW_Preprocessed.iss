@@ -160,7 +160,7 @@ OutputDir=out\
 OutputBaseFilename=TenGallonHatSetup
 
 ;Target folder settings
-DefaultDirName={pf}\Hack Test Win Installer\
+DefaultDirName={pf}\Ten Gallon Hat Font\
 ;Don't warn when the taget folder exists
 DirExistsWarning=no
 
@@ -672,7 +672,7 @@ begin
 
   LogAsImportant('--------------------------------');
   LogAsImportant('Font name.....: Ten Gallon Hat fonts');
-  LogAsImportant('Script version: 2.05');
+  LogAsImportant('Script version: 2.06');
   LogAsImportant('Setup version.: 1.0.0');
   LogAsImportant('Font version..: 1.02');
   LogAsImportant('Local time....: ' + GetDateTimeString('yyyy-dd-mm hh:nn', '-', ':'));

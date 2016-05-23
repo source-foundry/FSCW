@@ -4,7 +4,7 @@
 //https://github.com/source-foundry/fscw
 //--------------------------------------------------------
 //Version of this installer script. Please do not change.
-#define public ScriptVersion '2.05'
+#define public ScriptVersion '2.06'
 //--------------------------------------------------------
 
 

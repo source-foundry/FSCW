@@ -15,10 +15,11 @@ environment:
 
 
 install: 
+  - ps: "Current AppVeyor build: $env:APPVEYOR_BUILD_VERSION"
   # Create TEMP folder
   - md C:\temp
   # Download and install Inno Setup. 
-  - ps: $env:INNOSETUP_DOWNLOAD_URL
+  - ps: "Downloading Inno Setup from: $env:INNOSETUP_DOWNLOAD_URL"
   - ps: (new-object net.webclient).DownloadFile($env:INNOSETUP_DOWNLOAD_URL, 'c:\temp\innosetup.exe')
   - c:\temp\innosetup.exe TYPE=full /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /CLOSEAPPLICATIONS /NORESTARTAPPLICATIONS
   # Add Inno Setup to PATH so the ISCC command is found

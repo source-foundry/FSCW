@@ -12,12 +12,12 @@ Although it might seem like overkill to use a Windows installer for fonts, there
 
 ## Setup experience
 
-- Uses downloads `(SetupExe).exe` from your repository and double clicks it. 
+- Uses downloads `(SetupExe)` from your repository and double clicks it. 
 - User sees a *Windows protected your PC* message, clicks on `More info` and selects `Run anyway`. 
 - **Note:** The appearing *Windows SmartScreen warning* can be safely ignored as it is caused only by the fact that the EXE is not digitally signed. You may want to upload the EXE file to [VirusTotal](http://www.virustotal.com) and link to the report from your repository. 
 - User asks if the font(s) should be installed
 - **SCREENSHOT**
-- `(SetupExe).exe` asks the user to perform a restart 
+- `(SetupExe)` asks the user to perform a restart 
 - Font can be used.
 
 To uninstall, the user goes to the *Add/Remove Programs* applet in Control Panel, selects the entry and clicks on *Remove*.
@@ -27,13 +27,21 @@ To uninstall, the user goes to the *Add/Remove Programs* applet in Control Panel
 
 - Clone this repository
 - Delete the test fonts included and exchange them for your your own `*.TTF` files (in `/fonts`)
-- Update the other files as you see fit (e.g. `License.txt`)
+- Update the other files as you see fit (e.g. `License.txt`, icon file etc.)
 - Update `src/DATA.ini` to match your own data (Your name, copyright etc.)  
 - **NOTE** Please always remember to update `UniqueID` in `src/DATA.ini`
 
-## AppVeyor
+## Building on Windows
 
-[AppVeyor](https://www.appveyor.com/) is a continuous integration (CI) service that provides a Windows based environment. It can be used to build `SetupExe` if you do not have access to a Windows installation. It can be freely used for open source projects. 
+- Download [Inno Setup](http://www.jrsoftware.org/isinfo.php)
+  - Please make sure the option "Inno Setup Prepocessor" is activated during install
+- Open `src\FSCW.iss`
+- Select *Build* - *Compile* (CTRL+F9)
+- Retrieve your `(SetupExe)` from the `\out` folder
+
+## Building without Windows (using AppVeyor)
+
+[AppVeyor](https://www.appveyor.com/) is a continuous integration (CI) service that provides a Windows based environment and can be freely used for open source projects. You can use it to build `(SetupExe)` if you do not have access to a Windows installation.  
 
 To use it, do the following:
 - Clone this repository

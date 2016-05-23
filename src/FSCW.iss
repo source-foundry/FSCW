@@ -4,7 +4,7 @@
 //https://github.com/source-foundry/FSCW
 //--------------------------------------------------------
 //Version of this installer script. Please do not change.
-#define public ScriptVersion '2.06'
+#define public ScriptVersion '2.07'
 //--------------------------------------------------------
 
 
@@ -56,18 +56,6 @@
  #pragma error 'UniqueID is empty'
 #endif
 
-//Retrieve source folder        
-#define font_source_folder GetDataIniValue(SectionInstallFonts, 'SourceFolder')
-#if len(font_source_folder)==0
- #error 'Source folder is empty'
-#endif
-
-//Retrieve InstallerName
-#define public InstallerName GetDataIniValue(SectionGeneral, 'Name')
-#if len(InstallerName)==0
- #error 'Name is empty'
-#endif
-
 //Version of the SETUP/INSTALLER
 #define public Version GetDataIniValue(SectionVersion, 'Version')
 #if len(Version)==0
@@ -94,6 +82,7 @@
  #endif
 #endif 
 
+
 //Name of this font
 #define public FontName GetDataIniValue(SectionAbout, 'FontName')
 #if len(FontName)==0
@@ -112,10 +101,27 @@
  #error 'Copyright is empty'
 #endif
 
+//Retrieve HomepageURL 
+#define public HomepageURL GetDataIniValue(SectionAbout, 'HomepageURL')
+#if len(HomepageURL)==0
+ #error 'HomepageURL is empty'
+#endif
+
+//Retrieve SupportURL
+#define public SupportURL GetDataIniValue(SectionAbout, 'SupportURL')
+#if len(SupportURL)==0
+ #error 'SupportURL is empty'
+#endif
+
+//Retrieve InstallerName
+#define public InstallerName GetDataIniValue(SectionGeneral, 'Name')
+#if len(InstallerName)==0
+ #error 'Name is empty'
+#endif
+
 //Retrieve icon file
 #define public IconFile GetDataIniValue(SectionGeneral, 'Icon')
 //Icon file can be empty, so no check here
-
 
 //Retrieve ExeFile (name of the setup)  
 #define public ExeFile GetDataIniValue(SectionGeneral, 'ExeFile')
@@ -129,18 +135,18 @@
  #error 'DestinationFolder is empty'
 #endif
 
-//Retrieve Homepage 
-#define public Homepage GetDataIniValue(SectionAbout, 'Homepage')
-#if len(Homepage)==0
- #error 'Homepage is empty'
-#endif
-
 //Retrieve license file(s) 
 #define public LicenseFiles GetDataIniValue(SectionGeneral, 'LicenseFile')
 #if len(LicenseFiles)==0
  #error 'LicenseFile is empty'
 #endif
 
+
+//Retrieve source folder        
+#define font_source_folder GetDataIniValue(SectionInstallFonts, 'SourceFolder')
+#if len(font_source_folder)==0
+ #error 'Source folder is empty'
+#endif
 
 
 //Process *InstallFonts* section
@@ -303,7 +309,7 @@ AppCopyright={#Copyright}
 ;Information displayed in Control Panel -> Add/Remove Programs applet
 ;---------------------------------------------------
 ;Displayed as "Help link:"
-AppSupportURL={#Homepage}
+AppSupportURL={#SupportURL}
 ;Should also be displayed there, but I was unable to verify this
 AppContact={#Publisher}
 ;Displayed as "Comments" 
@@ -386,7 +392,7 @@ ReadyLabel2b=Setup is now ready to install the {#FontName} v{#FontVersion} on yo
 Name: "{app}\Fonts Applet"; Filename: "control.exe"; Parameters: "/name Microsoft.Fonts"; WorkingDir: "{win}";
 
 ;Link to the homepage for this font
-Name: "{app}\Homepage"; Filename: "{#Homepage}"; 
+Name: "{app}\Homepage"; Filename: "{#HomepageURL}"; 
 
 
 [Files]

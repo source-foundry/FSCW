@@ -37,6 +37,7 @@
 
 
 
+
 ; Processing section InstallFonts
 
 
@@ -144,7 +145,7 @@ AppCopyright=Copyright © 2016 Michael Hex / Source Foundry
 ;Information displayed in Control Panel -> Add/Remove Programs applet
 ;---------------------------------------------------
 ;Displayed as "Help link:"
-AppSupportURL=http://sourcefoundry.org/hack/
+AppSupportURL=https://github.com/source-foundry/FSCW
 ;Should also be displayed there, but I was unable to verify this
 AppContact=Michael Hex / Source Foundry
 ;Displayed as "Comments" 
@@ -225,7 +226,7 @@ ReadyLabel2b=Setup is now ready to install the Ten Gallon Hat fonts v1.02 on you
 Name: "{app}\Fonts Applet"; Filename: "control.exe"; Parameters: "/name Microsoft.Fonts"; WorkingDir: "{win}";
 
 ;Link to the homepage for this font
-Name: "{app}\Homepage"; Filename: "http://sourcefoundry.org/hack/"; 
+Name: "{app}\Homepage"; Filename: "https://github.com/source-foundry/ten-gallon-font/"; 
 
 
 [Files]
@@ -672,7 +673,7 @@ begin
 
   LogAsImportant('--------------------------------');
   LogAsImportant('Font name.....: Ten Gallon Hat fonts');
-  LogAsImportant('Script version: 2.06');
+  LogAsImportant('Script version: 2.07');
   LogAsImportant('Setup version.: 1.0.0');
   LogAsImportant('Font version..: 1.02');
   LogAsImportant('Local time....: ' + GetDateTimeString('yyyy-dd-mm hh:nn', '-', ':'));

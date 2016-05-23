@@ -1,0 +1,79 @@
+# Appveyor build script
+# List of installed tools/SDKs etc.: https://www.appveyor.com/docs/installed-software
+
+version: 1.1.{build}
+
+# Do not run when just a tag is pushed (which we do automatically by adding a release)
+skip_tags: true
+
+branches:
+  except:
+    - gh-pages
+
+environment:
+  WORK_PATH: .
+  TEST_FONTS_BASE_URL: https://github.com/chrissimpkins/Hack/raw/master/build/test_builds
+
+  
+install:
+  # We  use CURL from Chocolatey for downloading files. However, curl.exe does not trust 
+  # any CA, hence each SSL download would fail. But there is a PEM archive of all 
+  # root CA allowed by Firefox: https://curl.haxx.se/docs/caextract.html
+  # We will use PowerShell (which is using the Root CAs in Windows) to download this file 
+  # and then instruct CURL to use it.  
+  # I hope this is proper way to ensure that our https connections are really secure  
+  - md C:\temp  
+  
+  # Download CA pem file using PowerShell
+  - ps: (new-object net.webclient).DownloadFile('https://curl.haxx.se/ca/cacert.pem', 'c:\temp\cacert.pem')  
+  # Install CURL using Chocolatey (https://chocolatey.org/packages/curl)
+  - choco install -y curl       
+  - cd %APPVEYOR_BUILD_FOLDER%\testfonts
+  # To be sure, delete all old -DEV.ttf files
+  - del *-DEV.ttf /Q   
+  - dir
+  
+  # Download newest version of the font files.
+  # CURL Options: use our PEM file, follow redirect and use the remote name as the local filename
+  - curl.exe --cacert C:\temp\cacert.pem --location --remote-name %TEST_FONTS_BASE_URL%/Hack-Regular-DEV.ttf
+  - curl.exe --cacert C:\temp\cacert.pem --location --remote-name %TEST_FONTS_BASE_URL%/Hack-Italic-DEV.ttf
+  - curl.exe --cacert C:\temp\cacert.pem --location --remote-name %TEST_FONTS_BASE_URL%/Hack-Bold-DEV.ttf
+  - curl.exe --cacert C:\temp\cacert.pem --location --remote-name %TEST_FONTS_BASE_URL%/Hack-BoldItalic-DEV.ttf   
+  - dir 
+    
+  # Download (newest version from US site) and install Inno Setup. 
+  # We are using PowerShell to verify the connection by using the Windows root CAs
+  - ps: (new-object net.webclient).DownloadFile('http://www.jrsoftware.org/download.php/is.exe?site=1', 'c:\temp\innosetup.exe')
+  - c:\temp\innosetup.exe TYPE=full /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /CLOSEAPPLICATIONS /NORESTARTAPPLICATIONS
+  # Add Inno Setup to PATH so the ISCC command is found
+  - set PATH="C:\Program Files (x86)\Inno Setup 5";%PATH%
+
+    
+
+build_script:
+  - iscc.exe /DEXTERNAL_VERSION=%APPVEYOR_BUILD_VERSION% %APPVEYOR_BUILD_FOLDER%\src\HackWindowsInstaller.iss
+  # - dir
+
+  
+artifacts:
+  - path: 'out\*.exe'
+    name: SetupExe
+  
+deploy:
+  provider: GitHub
+  auth_token:
+    secure: 6Ez1BkZ4iDyoY17CZAwbOcQJcKnn8ZWK3vV2QINglWqgkOFRkN4JCtdMu0fyBFMc
+  artifact: SetupExe
+  prerelease: true
+  tag: v$(appveyor_build_version)
+  release: Version $(appveyor_build_version)
+  description: $(APPVEYOR_REPO_COMMIT_MESSAGE) ($(APPVEYOR_REPO_COMMIT_TIMESTAMP))
+
+  
+notifications:
+  - provider: Slack
+    auth_token:
+      secure: ElggvPLQdlcU9+djZsLDZpZLjOOpYg5Y2DRFQGN2yuSrZqoOP/1PCAmUSd8RJjrukymK1FQNrKuSpiw0hLHEeg==
+    channel: '#release-info'
+  
+#done

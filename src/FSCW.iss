@@ -4,7 +4,7 @@
 //https://github.com/source-foundry/FSCW
 //--------------------------------------------------------
 //Version of this installer script. Please do not change.
-#define public ScriptVersion '2.07'
+#define public ScriptVersion '2.08'
 //--------------------------------------------------------
 
 

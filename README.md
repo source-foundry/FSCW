@@ -1,19 +1,19 @@
 # Font Setup Creator for Windows (FSCW)
 
-Font Setup Creator for Windows (FSCW) is a a toolkit to create a Windows desktop setup for fonts. 
+Font Setup Creator for Windows (FSCW) is a a toolkit to create a Windows desktop setup installer for fonts. 
 
-It is driven by a [DATA.ini](https://github.com/source-foundry/FSCW/blob/master/src/DATA.ini) file that includes all necessary information about the font(s) to install and uses [Inno Setup](http://www.jrsoftware.org/isinfo.php) to generate the Setup.exe file. If you do not run Windows, a build script for [AppVeyor](https://www.appveyor.com/) is also included. AppVeyor can build the Setup EXE automatically each time you push to your repository.
+It is driven by a [DATA.ini](https://github.com/source-foundry/FSCW/blob/master/src/DATA.ini) file that includes all necessary information about the font(s) to install and uses [Inno Setup](http://www.jrsoftware.org/isinfo.php) to generate the Setup.exe file. If you do not run Windows, a build script for [AppVeyor](https://www.appveyor.com/) is also included. AppVeyor can build the Setup.exe installer automatically each time that you push to your repository.
 
 ## Why this project exists
 
-FSCW includes all best practises for font installation on Windows we have learned while creating the [Windows installer](https://github.com/source-foundry/Hack-windows-installer) for the [Hack typeface](https://github.com/chrissimpkins/Hack). 
+FSCW includes all best practices for font installation on Windows that we have learned while creating the [Windows installer](https://github.com/source-foundry/Hack-windows-installer) for the [Hack typeface](https://github.com/chrissimpkins/Hack). 
 
 Although it might seem like overkill to use a Windows installer for fonts, there is good reason for this on the Windows platform. A number of things can go wrong when one tries to install or update frequently updated fonts manually (see [issue #152](https://github.com/chrissimpkins/Hack/issues/152) and [issue #129](https://github.com/chrissimpkins/Hack/issues/129) in the [Hack repository](https://github.com/chrissimpkins/Hack/)).
 
-## Setup experience
+## Setup experience for end users
 
-- Uses downloads `(SetupExe)` from your repository and double clicks it. 
-- User sees a *Windows protected your PC* message: Needs to click on `More info` and the `Run anyway`. 
+- User downloads `(SetupExe)` from your repository and double clicks it. 
+- User sees a *Windows protected your PC* message: Needs to click on `More info` and then `Run anyway`. 
 - **Note:** This *Windows SmartScreen warning* can be safely ignored as it is caused only by the fact that the EXE is not digitally signed. You may want to upload the EXE file to [VirusTotal](http://www.virustotal.com) and link to the report from your repository. 
 - User is asked if the font(s) should be installed ([Screenshot](https://github.com/source-foundry/FSCW/raw/master/img/screenshot-install.png)).
 - User is asked to to perform a restart ([Screenshot](https://github.com/source-foundry/FSCW/raw/master/img/screenshot-restart.png)).
@@ -57,7 +57,7 @@ You can also change [appveyor.yml](https://github.com/source-foundry/FSCW/blob/m
 
 Any constructive contribution is very welcome, regarless if it's an [issue](https://github.com/source-foundry/FSCW/issues/new) or a [pull request](https://help.github.com/articles/using-pull-requests/).
 
-If users of the setup are experience difficulties, please open a new [issue](https://github.com/source-foundry/FSCW/issues/new) and include the log file FSCW generates. This log file can be found in C:\Program Files\\`(DestinationFolder)`\\*Log-FSCW.txt*. Please post the entire contents of this log along with the issue.   
+If users of the setup experience any difficulties, please open a new [issue](https://github.com/source-foundry/FSCW/issues/new) and include the log file FSCW generates. This log file can be found in C:\Program Files\\`(DestinationFolder)`\\*Log-FSCW.txt*. Please post the entire contents of this log along with the issue.   
 
 
 ## License

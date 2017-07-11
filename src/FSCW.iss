@@ -573,12 +573,14 @@ begin
 	hSCM := OpenServiceManager();
 	Result := false;
 	if hSCM <> 0 then begin
-		hService := OpenService(hSCM,ServiceName,SERVICE_QUERY_CONFIG);
-        if hService <> 0 then begin
-            Result := true;
-            CloseServiceHandle(hService)
-		end;
-        CloseServiceHandle(hSCM)
+		 hService := OpenService(hSCM,ServiceName,SERVICE_QUERY_CONFIG);
+     
+     if hService <> 0 then begin
+        Result := true;
+        CloseServiceHandle(hService)
+		 end;
+     
+     CloseServiceHandle(hSCM)
 	end
 end;
 
@@ -590,12 +592,14 @@ begin
 	hSCM := OpenServiceManager();
 	Result := false;
 	if hSCM <> 0 then begin
-		hService := OpenService(hSCM,ServiceName,SERVICE_START);
-        if hService <> 0 then begin
-        	Result := StartNTService(hService,0,0);
-            CloseServiceHandle(hService)
-		end;
-        CloseServiceHandle(hSCM)
+		 hService := OpenService(hSCM,ServiceName,SERVICE_START);
+     
+     if hService <> 0 then begin
+      	Result := StartNTService(hService,0,0);
+        CloseServiceHandle(hService)
+		 end;
+     
+     CloseServiceHandle(hSCM)
 	end;
 end;
 
@@ -608,12 +612,14 @@ begin
 	hSCM := OpenServiceManager();
 	Result := false;
 	if hSCM <> 0 then begin
-		hService := OpenService(hSCM,ServiceName,SERVICE_STOP);
-        if hService <> 0 then begin
-        	Result := ControlService(hService,SERVICE_CONTROL_STOP,Status);
-            CloseServiceHandle(hService)
+		 hService := OpenService(hSCM,ServiceName,SERVICE_STOP);
+     
+     if hService <> 0 then begin
+      	Result := ControlService(hService,SERVICE_CONTROL_STOP,Status);
+        CloseServiceHandle(hService)
 		end;
-        CloseServiceHandle(hSCM)
+    
+    CloseServiceHandle(hSCM)
 	end;
 end;
 
@@ -626,14 +632,17 @@ begin
 	hSCM := OpenServiceManager();
 	Result := false;
 	if hSCM <> 0 then begin
-		hService := OpenService(hSCM,ServiceName,SERVICE_QUERY_STATUS);
-    	if hService <> 0 then begin
-			if QueryServiceStatus(hService,Status) then begin
-				Result :=(Status.dwCurrentState = SERVICE_RUNNING)
-        	end;
-            CloseServiceHandle(hService)
-		    end;
-        CloseServiceHandle(hSCM)
+		  hService := OpenService(hSCM,ServiceName,SERVICE_QUERY_STATUS);
+    	
+      if hService <> 0 then begin
+			
+         if QueryServiceStatus(hService,Status) then begin
+				    Result := (Status.dwCurrentState = SERVICE_RUNNING)
+         end;
+      
+         CloseServiceHandle(hService)
+		  end;
+      CloseServiceHandle(hSCM)
 	end
 end;
 

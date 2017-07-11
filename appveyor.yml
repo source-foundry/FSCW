@@ -10,6 +10,8 @@ branches:
     - gh-pages
 
 
+# This URL does not need to be updated.
+# We keep the latest tested InnoSetup version in this 0.0.1 "version" to make sure the build works
 environment:
   INNOSETUP_DOWNLOAD_URL: https://github.com/source-foundry/fscw/releases/download/v0.0.1/innosetup.exe
 

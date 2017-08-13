@@ -6,9 +6,9 @@ It is driven by a [DATA.ini](https://github.com/source-foundry/FSCW/blob/master/
 
 ## Why this project exists
 
-FSCW includes all best practices for font installation on Windows that we have learned while creating the [Windows installer](https://github.com/source-foundry/Hack-windows-installer) for the [Hack typeface](https://github.com/chrissimpkins/Hack). 
+FSCW includes all best practices for font installation on Windows that we have learned while creating the [Windows installer](https://github.com/source-foundry/Hack-windows-installer) for the [Hack typeface](https://github.com/source-foundry/Hack). 
 
-Although it might seem like overkill to use a Windows installer for fonts, there is good reason for this on the Windows platform. A number of things can go wrong when one tries to install or update frequently updated fonts manually (see [issue #152](https://github.com/chrissimpkins/Hack/issues/152) and [issue #129](https://github.com/chrissimpkins/Hack/issues/129) in the [Hack repository](https://github.com/chrissimpkins/Hack/)).
+Although it might seem like overkill to use a Windows installer for fonts, there is good reason for this on the Windows platform. A number of things can go wrong when one tries to install or update frequently updated fonts manually (see [issue #152](https://github.com/source-foundry/Hack/issues/152) and [issue #129](https://github.com/source-foundry/Hack/issues/129) in the [Hack repository](https://github.com/source-foundry/Hack/)).
 
 ## Setup experience for end users
 
@@ -61,5 +61,5 @@ If users of the setup experience any difficulties, please open a new [issue](htt
 
 
 ## License
-Copyright © 2016 [Michael 'Tex' Hex](http://www.texhex.info/) / [Source Foundry](http://sourcefoundry.org/hack/). Licensed under the **MIT License**. For details, please see [LICENSE.txt](https://github.com/source-foundry/FSCW/blob/master/LICENSE.txt).
+Copyright © 2017 [Michael 'Tex' Hex](http://www.texhex.info/) / [Source Foundry](http://sourcefoundry.org/hack/). Licensed under the **MIT License**. For details, please see [LICENSE.txt](https://github.com/source-foundry/FSCW/blob/master/LICENSE.txt).
 

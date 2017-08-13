@@ -5,6 +5,9 @@ version: 1.0.{build}
 # Do not run when just a tag is pushed 
 skip_tags: true
 
+# For now, just testing why appveyor gives me an error
+build: off
+
 branches:
   except:
     - gh-pages

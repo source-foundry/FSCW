@@ -41,9 +41,9 @@ To uninstall, the user goes to the *Add/Remove Programs* applet in Control Panel
 
 ## Building using AppVeyor
 
-[AppVeyor](https://www.appveyor.com/) is a continuous integration (CI) service that provides a Windows based environment and can be freely used for open source projects. You can use it to build `(SetupExe)` if you do not have access to a Windows installation.  
+[AppVeyor](https://www.appveyor.com/) is a continuous integration (CI) service that provides a Windows based environment and can be freely used for open source projects. You can use it to build `(SetupExe)` if you do not have regular access to a Windows installation.  
 
-- Perform the steps described in [How to use it](#how-to-use-it)
+- Perform the steps described in [How to use it](#how-to-use-it) so you have a working script that AppVeyor can execute
 - Create an account at [AppVeyor](https://www.appveyor.com/) (You can login using your GitHub account)
 - Click on the *PROJECTS* tab
 - Click *NEW PROJECT*
@@ -61,5 +61,5 @@ If users of the setup experience any difficulties, please open a new [issue](htt
 
 
 ## License
-Copyright © 2017 [Michael 'Tex' Hex](http://www.texhex.info/) / [Source Foundry](http://sourcefoundry.org/hack/). Licensed under the **MIT License**. For details, please see [LICENSE.txt](https://github.com/source-foundry/FSCW/blob/master/LICENSE.txt).
+Copyright © 2017-2019 [Michael 'Tex' Hex](http://www.texhex.info/) / [Source Foundry](http://sourcefoundry.org/hack/). Licensed under the **MIT License**. For details, please see [LICENSE.txt](https://github.com/source-foundry/FSCW/blob/master/LICENSE.txt).
 

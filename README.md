@@ -13,7 +13,7 @@ Although it might seem like overkill to use a Windows installer for fonts, there
 ## Setup experience for end users
 
 - User downloads `(SetupExe)` from your repository and double clicks it. 
-- User sees a *Windows protected your PC* message: Needs to click on `More info` and then `Run anyway`. 
+- User sees a *Windows protected your PC* message ([Screenshot](https://github.com/source-foundry/FSCW/raw/master/img/screenshot-smartscreen.png)).: Needs to click on `More info` and then `Run anyway`. 
 - **Note:** This *Windows SmartScreen warning* can be safely ignored as it is caused only by the fact that the EXE is not digitally signed. You may want to upload the EXE file to [VirusTotal](http://www.virustotal.com) and link to the report from your repository. 
 - User is asked if the font(s) should be installed ([Screenshot](https://github.com/source-foundry/FSCW/raw/master/img/screenshot-install.png)).
 - User is asked to to perform a restart ([Screenshot](https://github.com/source-foundry/FSCW/raw/master/img/screenshot-restart.png)).
